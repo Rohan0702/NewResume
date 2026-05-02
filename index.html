@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohan Tidke — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --gold-light: #f0d060;
+  --gold-mid: #c8962c;
+  --gold-dark: #8b5e1a;
+  --gold-deep: #5c3a0a;
+  --parchment: #f5e9cc;
+  --parchment-dark: #e8d5a8;
+  --parchment-deeper: #d4b87a;
+  --ink: #2a1a0a;
+  --burgundy: #6b1a2a;
+  --shadow: rgba(42,26,10,0.6);
+  --glow: rgba(200,150,44,0.4);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  background-color:#1a0e05;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, #3d1e07 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, #2b1204 0%, transparent 60%);
+  color:var(--ink);
+  font-family:'EB Garamond',serif;
+  font-size:18px;
+  line-height:1.7;
+}
+a{color:inherit}
+img{display:block;max-width:100%}
+
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.mote{
+  position:absolute;border-radius:50%;
+  background:radial-gradient(circle,var(--gold-light),transparent);
+  animation:float-mote linear infinite;
+  opacity:0;
+}
+@keyframes float-mote{
+  0%{transform:translateY(100vh) scale(0);opacity:0}
+  10%{opacity:.6}
+  90%{opacity:.3}
+  100%{transform:translateY(-10vh) scale(1.2) rotate(360deg);opacity:0}
+}
+
+.spine{
+  position:fixed;top:0;left:0;width:8px;height:100%;
+  background:linear-gradient(to bottom,var(--gold-mid),var(--gold-dark),var(--gold-mid),var(--gold-dark),var(--gold-mid));
+  z-index:100;box-shadow:2px 0 12px var(--glow);
+}
+
+nav{
+  position:fixed;top:0;left:8px;right:0;z-index:99;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;
+  background:linear-gradient(to bottom,rgba(26,14,5,.97),rgba(26,14,5,.8));
+  border-bottom:1px solid var(--gold-dark);
+  box-shadow:0 2px 20px rgba(0,0,0,.5);
+  backdrop-filter:blur(6px);
+}
+.nav-logo{
+  font-family:'Cinzel Decorative',serif;
+  font-size:1rem;color:var(--gold-light);
+  letter-spacing:.2em;text-transform:uppercase;
+  text-shadow:0 0 20px var(--glow);
+}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-family:'Cinzel',serif;font-size:.75rem;
+  color:var(--parchment-deeper);letter-spacing:.15em;
+  text-transform:uppercase;text-decoration:none;
+  transition:color .3s,text-shadow .3s;
+}
+.nav-links a:hover{color:var(--gold-light);text-shadow:0 0 12px var(--glow)}
+.nav-links a::before{content:'✦ ';opacity:0;transition:opacity .3s}
+.nav-links a:hover::before{opacity:1}
+
+section{
+  position:relative;z-index:1;
+  max-width:1100px;margin:0 auto;
+  padding:100px 40px;
+}
+section:not(#hero){padding-top:120px}
+.divider{
+  text-align:center;margin:20px auto;
+  position:relative;display:flex;align-items:center;gap:16px;
+}
+.divider::before,.divider::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold-dark),transparent);
+}
+.divider-glyph{
+  font-family:'Cinzel Decorative',serif;
+  color:var(--gold-mid);font-size:1.2rem;
+  text-shadow:0 0 14px var(--glow);
+  animation:pulse-glow 3s ease-in-out infinite;
+}
+@keyframes pulse-glow{
+  0%,100%{text-shadow:0 0 14px var(--glow)}
+  50%{text-shadow:0 0 28px var(--gold-light),0 0 6px var(--gold-light)}
+}
+.chapter-label{
+  font-family:'Great Vibes',cursive;
+  font-size:1.4rem;color:var(--gold-mid);
+  text-align:center;margin-bottom:6px;
+  opacity:.8;letter-spacing:.1em;
+  animation:write-in 1s ease forwards;
+}
+.section-title{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);
+  color:var(--gold-light);
+  text-align:center;margin-bottom:40px;
+  text-shadow:0 0 30px var(--glow);
+  letter-spacing:.1em;
+}
+.ornate-box{
+  position:relative;
+  background:linear-gradient(145deg,rgba(240,208,96,.07),rgba(139,94,26,.04));
+  border:1px solid var(--gold-dark);
+  border-radius:4px;
+  padding:40px;
+}
+.ornate-box::before,.ornate-box::after,.ornate-box .corner-br,.ornate-box .corner-bl{
+  content:'';position:absolute;width:24px;height:24px;
+  border-color:var(--gold-mid);border-style:solid;
+  pointer-events:none;
+}
+.ornate-box::before{top:6px;left:6px;border-width:2px 0 0 2px}
+.ornate-box::after{top:6px;right:6px;border-width:2px 2px 0 0}
+.ornate-box .corner-br{bottom:6px;right:6px;border-width:0 2px 2px 0}
+.ornate-box .corner-bl{bottom:6px;left:6px;border-width:0 0 2px 2px}
+
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding-top:100px;
+  background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(200,150,44,.12),transparent);
+}
+.avatar-stage{position:relative;display:inline-block;margin-bottom:32px}
+.avatar-wrap{
+  width:160px;height:160px;border-radius:50%;
+  border:3px solid var(--gold-mid);
+  box-shadow:0 0 40px var(--glow),0 0 80px rgba(200,150,44,.2),inset 0 0 20px rgba(0,0,0,.5);
+  overflow:hidden;position:relative;z-index:1;
+  background:linear-gradient(135deg,#3d1e07,#1a0e05);
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;color:var(--gold-mid);
+  animation:avatar-appear .8s ease backwards;
+  transition:box-shadow .3s;
+}
+.avatar-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:50% 30%;
+  transform:scale(1.06);
+}
+.avatar-wrap:hover{box-shadow:0 0 60px var(--gold-light),0 0 100px rgba(200,150,44,.3)}
+@keyframes avatar-appear{from{transform:scale(0.5);opacity:0}to{transform:scale(1);opacity:1}}
+.orbit-ring{
+  position:absolute;inset:-20px;border-radius:50%;
+  border:1px dashed var(--gold-dark);
+  animation:spin-slow 15s linear infinite;
+}
+.orbit-ring-2{
+  position:absolute;inset:-36px;border-radius:50%;
+  border:1px solid rgba(200,150,44,.3);
+  animation:spin-slow 25s linear infinite reverse;
+}
+.gem{
+  position:absolute;width:10px;height:10px;border-radius:50%;
+  background:radial-gradient(circle,var(--gold-light),var(--gold-dark));
+  box-shadow:0 0 10px var(--gold-light);
+  top:50%;left:50%;transform-origin:0 0;
+}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.hero-eyebrow{
+  font-family:'Great Vibes',cursive;
+  font-size:2rem;color:var(--gold-mid);
+  margin-bottom:8px;
+  animation:fade-up .8s .2s ease backwards;
+  opacity:.9;
+}
+.hero-name{
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(2rem,5vw,3.8rem);
+  color:var(--gold-light);
+  text-shadow:0 0 40px var(--glow),0 0 80px rgba(200,150,44,.2);
+  line-height:1.1;margin-bottom:8px;
+  animation:fade-up .8s .4s ease backwards;
+}
+.hero-subtitle{
+  font-family:'Cinzel',serif;
+  font-size:clamp(.8rem,1.8vw,1rem);
+  color:var(--parchment-deeper);
+  letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:6px;
+  animation:fade-up .8s .6s ease backwards;
+}
+.hero-location{
+  font-family:'EB Garamond',serif;font-style:italic;
+  color:var(--gold-dark);font-size:1rem;margin-bottom:20px;
+  animation:fade-up .8s .7s ease backwards;
+}
+.hero-tagline{
+  font-family:'Great Vibes',cursive;
+  font-size:1.8rem;color:var(--parchment);
+  margin-bottom:32px;
+  animation:fade-up .8s .8s ease backwards;
+  opacity:.85;
+}
+.cta-group{
+  display:flex;gap:20px;flex-wrap:wrap;justify-content:center;
+  margin-bottom:50px;
+  animation:fade-up .8s 1s ease backwards;
+}
+.btn{
+  font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.15em;
+  text-transform:uppercase;text-decoration:none;
+  padding:14px 32px;border-radius:2px;
+  border:1px solid var(--gold-mid);
+  position:relative;overflow:hidden;
+  transition:all .3s;cursor:pointer;display:inline-block;
+}
+.btn::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(45deg,transparent 40%,rgba(240,208,96,.15) 50%,transparent 60%);
+  transform:translateX(-100%);transition:transform .4s;
+}
+.btn:hover::before{transform:translateX(100%)}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold-mid));
+  color:var(--ink);box-shadow:0 4px 20px rgba(200,150,44,.4);
+}
+.btn-primary:hover{
+  background:linear-gradient(135deg,var(--gold-mid),var(--gold-light));
+  box-shadow:0 6px 30px rgba(240,208,96,.5);transform:translateY(-2px);
+}
+.btn-secondary{background:transparent;color:var(--gold-light)}
+.btn-secondary:hover{
+  background:rgba(200,150,44,.1);
+  box-shadow:0 0 20px var(--glow);transform:translateY(-2px);
+}
+.skill-icons{
+  display:flex;gap:28px;flex-wrap:wrap;justify-content:center;
+  animation:fade-up .8s 1.2s ease backwards;
+}
+.skill-icon{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--gold-mid);font-size:.7rem;letter-spacing:.1em;
+  font-family:'Cinzel',serif;text-transform:uppercase;
+  transition:all .3s;
+}
+.skill-icon i{font-size:1.6rem;transition:transform .3s,text-shadow .3s}
+.skill-icon:hover{color:var(--gold-light)}
+.skill-icon:hover i{transform:translateY(-4px);text-shadow:0 0 20px var(--gold-light)}
+.scroll-hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--gold-dark);font-family:'Cinzel',serif;font-size:.65rem;
+  letter-spacing:.2em;animation:bounce 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+#about{background:linear-gradient(to bottom,transparent,rgba(61,30,7,.3),transparent)}
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:start}
+.about-portrait-frame{
+  width:100%;aspect-ratio:3/4;
+  border:2px solid var(--gold-dark);
+  background:linear-gradient(135deg,#2a1a0a,#1a0e05);
+  display:flex;align-items:center;justify-content:center;
+  font-size:5rem;color:var(--gold-mid);
+  position:relative;overflow:hidden;
+}
+.about-portrait-frame img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:50% 46%;
+  filter:sepia(.08) contrast(1.05) saturate(.96);
+}
+.about-portrait-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 60%,rgba(42,26,10,.8));
+  pointer-events:none;
+}
+.portrait-caption{
+  text-align:center;margin-top:10px;
+  font-family:'Cinzel',serif;font-size:.7rem;
+  color:var(--gold-dark);letter-spacing:.15em;text-transform:uppercase;
+}
+.about-content p{color:var(--parchment-dark);margin-bottom:20px;font-size:1rem}
+.about-content a{
+  color:var(--gold-mid);text-decoration:none;
+  border-bottom:1px solid var(--gold-dark);
+  transition:color .2s,border-color .2s;
+}
+.about-content a:hover{color:var(--gold-light);border-color:var(--gold-light)}
+.traits-list{list-style:none;margin-top:20px}
+.traits-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  margin-bottom:14px;color:var(--parchment-dark);font-size:.95rem;
+}
+.trait-bullet{color:var(--gold-mid);font-size:.9rem;margin-top:4px;flex-shrink:0}
+.skill-bars{margin-top:32px}
+.skill-bar-item{margin-bottom:18px}
+.skill-bar-label{
+  display:flex;justify-content:space-between;
+  font-family:'Cinzel',serif;font-size:.72rem;
+  letter-spacing:.1em;color:var(--gold-light);
+  text-transform:uppercase;margin-bottom:6px;
+}
+.skill-bar-track{
+  height:6px;background:rgba(139,94,26,.3);border-radius:3px;
+  position:relative;overflow:hidden;
+}
+.skill-bar-fill{
+  height:100%;border-radius:3px;
+  background:linear-gradient(to right,var(--gold-dark),var(--gold-light));
+  box-shadow:0 0 8px var(--glow);
+  width:0;transition:width 1.5s cubic-bezier(.22,.61,.36,1);
+}
+
+#certifications{
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(107,26,42,.08),transparent);
+}
+.cert-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;
+}
+.cert-card{
+  position:relative;
+  background:linear-gradient(145deg,rgba(61,30,7,.5),rgba(26,14,5,.7));
+  border:1px solid var(--gold-dark);border-radius:4px;
+  overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+}
+.cert-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--gold-mid),transparent);
+  opacity:0;transition:opacity .3s;z-index:2;
+}
+.cert-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px rgba(200,150,44,.15);
+}
+.cert-card:hover::before{opacity:1}
+.cert-image{
+  display:block;
+  aspect-ratio:16/10;
+  background:#120903;
+  border-bottom:1px solid var(--gold-dark);
+  overflow:hidden;
+  text-decoration:none;
+}
+.cert-image img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .35s ease,filter .35s ease;
+  filter:sepia(.12) contrast(1.05) saturate(.92);
+}
+.cert-card:hover .cert-image img{transform:scale(1.04);filter:sepia(0) contrast(1.08) saturate(1)}
+.cert-body{padding:32px 28px}
+.cert-badge{
+  width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold-mid));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--ink);
+  margin-bottom:18px;
+  box-shadow:0 0 20px rgba(200,150,44,.4);
+  flex-shrink:0;
+}
+.cert-org{
+  font-family:'Cinzel',serif;font-size:.65rem;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold-mid);margin-bottom:8px;
+}
+.cert-title{
+  font-family:'Cinzel',serif;font-size:1rem;
+  color:var(--parchment);font-weight:600;margin-bottom:12px;
+  line-height:1.4;
+}
+.cert-desc{
+  color:var(--parchment-deeper);font-size:.9rem;margin-bottom:20px;
+  line-height:1.6;
+}
+.cert-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.cert-tag{
+  font-family:'Cinzel',serif;font-size:.6rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 10px;border:1px solid var(--gold-dark);
+  border-radius:2px;color:var(--gold-dark);
+}
+.cert-link{
+  font-family:'Cinzel',serif;font-size:.7rem;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold-mid);text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;
+  border-bottom:1px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.cert-link:hover{color:var(--gold-light);border-bottom-color:var(--gold-light)}
+.cert-corner{
+  position:absolute;bottom:16px;right:16px;
+  font-size:2rem;color:rgba(200,150,44,.1);
+  font-family:'Cinzel Decorative',serif;
+}
+.verified-ribbon{
+  position:absolute;top:0;right:0;z-index:3;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold-mid));
+  color:var(--ink);font-family:'Cinzel',serif;
+  font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 14px 14px;
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);
+}
+
+#projects{background:linear-gradient(to bottom,transparent,rgba(42,26,10,.2),transparent)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.project-card{
+  position:relative;
+  background:linear-gradient(145deg,rgba(42,26,10,.5),rgba(26,14,5,.8));
+  border:1px solid var(--gold-dark);border-radius:4px;
+  padding:0;overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+}
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 30px rgba(200,150,44,.12);
+}
+.project-header{
+  background:linear-gradient(135deg,rgba(61,30,7,.8),rgba(107,26,42,.3));
+  border-bottom:1px solid var(--gold-dark);
+  padding:24px 24px 16px;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.project-icon{font-size:1.8rem;color:var(--gold-mid);flex-shrink:0;text-shadow:0 0 14px var(--glow)}
+.project-title{
+  font-family:'Cinzel',serif;font-size:.95rem;
+  color:var(--parchment);font-weight:600;margin-bottom:4px;
+}
+.project-status{
+  font-size:.65rem;font-family:'Cinzel',serif;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:3px 10px;border-radius:2px;
+  display:inline-block;
+}
+.status-dev{background:rgba(200,150,44,.2);color:var(--gold-mid);border:1px solid var(--gold-dark)}
+.project-body{padding:20px 24px 24px}
+.project-desc{color:var(--parchment-deeper);font-size:.92rem;margin-bottom:16px;line-height:1.6}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.tech-pill{
+  font-family:'Cinzel',serif;font-size:.58rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 10px;border:1px solid rgba(200,150,44,.3);
+  border-radius:10px;color:var(--parchment-deeper);
+}
+.project-challenge{
+  font-size:.85rem;color:var(--gold-dark);font-style:italic;
+  border-left:2px solid var(--gold-dark);padding-left:12px;
+}
+.github-mock{
+  display:flex;align-items:center;gap:8px;
+  color:var(--gold-dark);font-family:'Cinzel',serif;
+  font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  margin-top:14px;cursor:pointer;transition:color .2s;
+}
+.github-mock:hover{color:var(--gold-light)}
+
+#contact{background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(107,26,42,.1),transparent)}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info p{color:var(--parchment-dark);font-size:.95rem;margin-bottom:24px;line-height:1.7}
+.contact-links{display:flex;flex-direction:column;gap:14px}
+.contact-link{
+  display:flex;align-items:center;gap:12px;
+  color:var(--parchment-deeper);text-decoration:none;
+  font-family:'Cinzel',serif;font-size:.75rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:12px 16px;
+  border:1px solid rgba(139,94,26,.3);border-radius:2px;
+  transition:all .3s;
+}
+.contact-link i{color:var(--gold-mid);width:18px;text-align:center}
+.contact-link:hover{
+  border-color:var(--gold-mid);color:var(--gold-light);
+  background:rgba(200,150,44,.08);
+  box-shadow:0 0 20px rgba(200,150,44,.15);
+}
+.contact-form{display:flex;flex-direction:column;gap:18px}
+.form-label{
+  display:block;margin-bottom:6px;
+  font-family:'Cinzel',serif;font-size:.65rem;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold-dark);
+}
+.form-input,.form-textarea{
+  width:100%;padding:12px 16px;
+  background:rgba(42,26,10,.5);
+  border:1px solid var(--gold-dark);border-radius:2px;
+  color:var(--parchment);font-family:'EB Garamond',serif;font-size:1rem;
+  outline:none;transition:border-color .3s,box-shadow .3s;
+  resize:vertical;
+}
+.form-input:focus,.form-textarea:focus{
+  border-color:var(--gold-mid);
+  box-shadow:0 0 16px rgba(200,150,44,.2);
+}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--gold-deep);opacity:.7}
+.form-textarea{min-height:120px}
+.opportunity-banner{
+  margin-top:50px;padding:28px 40px;
+  background:linear-gradient(135deg,rgba(107,26,42,.3),rgba(61,30,7,.5));
+  border:1px solid var(--burgundy);border-radius:4px;
+  text-align:center;position:relative;overflow:hidden;
+}
+.opportunity-banner::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(45deg,transparent 40%,rgba(200,150,44,.05) 50%,transparent 60%);
+  animation:shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.opp-title{
+  font-family:'Cinzel Decorative',serif;font-size:1rem;
+  color:var(--gold-light);margin-bottom:8px;
+  text-shadow:0 0 20px var(--glow);
+}
+.opp-text{color:var(--parchment-deeper);font-size:.95rem;font-style:italic}
+footer{
+  position:relative;z-index:1;
+  text-align:center;
+  border-top:1px solid var(--gold-deep);
+  padding:40px 40px 24px;
+  background:rgba(10,6,2,.6);
+}
+.footer-sigil{
+  font-family:'Cinzel Decorative',serif;
+  font-size:1.2rem;color:var(--gold-dark);
+  margin-bottom:10px;letter-spacing:.2em;
+}
+.footer-text{
+  font-family:'Cinzel',serif;font-size:.65rem;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold-deep);
+}
+
+@keyframes fade-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes write-in{from{opacity:0;letter-spacing:.3em}to{opacity:.9;letter-spacing:.1em}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.stagger > *{transition-delay:calc(var(--i) * 0.1s)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#1a0e05}
+::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:3px}
+
+@media(max-width:768px){
+  nav{padding:12px 20px;align-items:flex-start;gap:12px;flex-direction:column}
+  .nav-links{width:100%;gap:12px;overflow-x:auto;padding-bottom:4px}
+  .nav-links a{font-size:.65rem;white-space:nowrap}
+  section{padding:80px 20px}
+  .about-grid{grid-template-columns:1fr}
+  .about-portrait{display:none}
+  .contact-layout{grid-template-columns:1fr}
+  .hero-name{font-size:2rem}
+  .cert-grid,.projects-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div id="particles"></div>
+<div class="spine"></div>
+
+<nav>
+  <div class="nav-logo">✦ R.T. ✦</div>
+  <ul class="nav-links">
+    <li><a href="#hero">Tome</a></li>
+    <li><a href="#about">Chronicle</a></li>
+    <li><a href="#certifications">Seals</a></li>
+    <li><a href="#projects">Codex</a></li>
+    <li><a href="#contact">Summon</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="avatar-stage">
+    <div class="orbit-ring-2"></div>
+    <div class="orbit-ring"></div>
+    <div class="avatar-wrap">
+      <img src="assets/rohan-profile-circle.png" alt="Portrait of Rohan Tidke">
+    </div>
+  </div>
+  <p class="hero-eyebrow">The Tome of</p>
+  <h1 class="hero-name">Rohan Tidke</h1>
+  <p class="hero-subtitle">Aspiring Computer Science Engineer &nbsp;✦&nbsp; Cybersecurity Enthusiast</p>
+  <p class="hero-location"><i class="fa-solid fa-location-dot" style="margin-right:6px"></i>Pandharpur, Maharashtra, India</p>
+  <p class="hero-tagline">"Building secure tech solutions"</p>
+  <div class="cta-group">
+    <a href="#projects" class="btn btn-primary">⚔ View Projects</a>
+    <a href="#certifications" class="btn btn-secondary">🏅 View Certificates</a>
+    <a href="https://www.linkedin.com/in/rohan-tidke-04bb8a32b" target="_blank" class="btn btn-secondary" rel="noopener">
+      <i class="fa-brands fa-linkedin" style="margin-right:6px"></i>LinkedIn
+    </a>
+    <a href="assets/Rohan_Tidke_Resume_ATS.pdf" class="btn btn-secondary" download>
+      <i class="fa-solid fa-file-arrow-down" style="margin-right:6px"></i>Download Resume
+    </a>
+  </div>
+  <div class="skill-icons">
+    <div class="skill-icon"><i class="fa-solid fa-code"></i><span>Coding</span></div>
+    <div class="skill-icon"><i class="fa-solid fa-shield-halved"></i><span>CyberSec</span></div>
+    <div class="skill-icon"><i class="fa-solid fa-network-wired"></i><span>Networking</span></div>
+    <div class="skill-icon"><i class="fa-brands fa-python"></i><span>Python</span></div>
+    <div class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i><span>Recon</span></div>
+    <div class="skill-icon"><i class="fa-solid fa-link"></i><span>Blockchain</span></div>
+    <div class="skill-icon"><i class="fa-solid fa-comments"></i><span>Soft Skills</span></div>
+  </div>
+  <div class="scroll-hint">
+    <span>Turn the page</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1100px;margin:0 auto;padding:0 40px"><div class="divider-glyph">⊕ ✦ ⊕</div></div>
+
+<section id="about">
+  <p class="chapter-label reveal">Chapter the First</p>
+  <h2 class="section-title reveal">The Chronicle</h2>
+  <div class="about-grid">
+    <div class="about-portrait reveal-left">
+      <div class="ornate-box" style="padding:6px">
+        <div class="corner-br"></div><div class="corner-bl"></div>
+        <div class="about-portrait-frame">
+          <img src="assets/rohan-portrait-frame.png" alt="Rohan Tidke seated portrait">
+        </div>
+      </div>
+      <p class="portrait-caption">Rohan Tidke · SVESRI · 2024-2027</p>
+    </div>
+    <div class="about-content reveal-right">
+      <div class="ornate-box">
+        <div class="corner-br"></div><div class="corner-bl"></div>
+        <p>I am <strong style="color:var(--gold-light)">Rohan Tidke</strong>, a second-year BTech Computer Science student at <strong style="color:var(--gold-light)">SVESRI Gopalpur</strong>, deeply passionate about cybersecurity, ethical hacking, and emerging technologies like blockchain.</p>
+        <p>With a growing network in the tech community, I strive to bridge theoretical knowledge with real-world application, from understanding network vulnerabilities to exploring the technologies shaping India's digital future.</p>
+        <p>
+          <a href="https://www.linkedin.com/in/rohan-tidke-04bb8a32b" target="_blank" rel="noopener">
+            <i class="fa-brands fa-linkedin" style="margin-right:6px"></i>View my full LinkedIn profile →
+          </a>
+        </p>
+        <div class="divider" style="margin:24px 0"><div class="divider-glyph" style="font-size:.9rem">✦</div></div>
+        <ul class="traits-list stagger">
+          <li style="--i:0"><span class="trait-bullet">◈</span><span><strong style="color:var(--gold-light)">Communication Excellence</strong> — NPTEL Soft Skills, IIT Kanpur (Elite, 76% score)</span></li>
+          <li style="--i:1"><span class="trait-bullet">◈</span><span><strong style="color:var(--gold-light)">Programming Growth</strong> — Python, Java, C, and data structure certificates</span></li>
+          <li style="--i:2"><span class="trait-bullet">◈</span><span><strong style="color:var(--gold-light)">Cybersecurity Foundations</strong> — Ethical hacking concepts, recon, scanning, and vulnerabilities</span></li>
+          <li style="--i:3"><span class="trait-bullet">◈</span><span><strong style="color:var(--gold-light)">Blockchain Interest</strong> — Completed Blockchain Basics course</span></li>
+          <li style="--i:4"><span class="trait-bullet">◈</span><span><strong style="color:var(--gold-light)">Community Mindset</strong> — Volunteer service and hackathon participation</span></li>
+        </ul>
+        <div class="skill-bars">
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-label"><span>Communication & Soft Skills</span><span>76%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="76%"></div></div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-label"><span>Cybersecurity Fundamentals</span><span>70%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70%"></div></div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-label"><span>Programming Foundations</span><span>68%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="68%"></div></div>
+          </div>
+          <div class="skill-bar-item reveal">
+            <div class="skill-bar-label"><span>Blockchain Basics</span><span>60%</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="60%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1100px;margin:0 auto;padding:0 40px"><div class="divider-glyph">⊕ ✦ ⊕</div></div>
+
+<section id="certifications">
+  <p class="chapter-label reveal">Chapter the Second</p>
+  <h2 class="section-title reveal">Arcane Seals & Credentials</h2>
+  <div class="cert-grid stagger">
+    <article class="cert-card reveal" style="--i:0">
+      <div class="verified-ribbon">✓ Verified</div>
+      <a class="cert-image" href="assets/certificates/Blockchain%20Basic.png" target="_blank" rel="noopener">
+        <img src="assets/certificates/Blockchain%20Basic.png" alt="Blockchain Basics Course certificate">
+      </a>
+      <div class="cert-body">
+        <div class="cert-badge"><i class="fa-solid fa-link"></i></div>
+        <div class="cert-org">Cyfrin Updraft</div>
+        <div class="cert-title">Blockchain Basics Course</div>
+        <div class="cert-desc">Completed a foundation course covering blockchain concepts, decentralized systems, and Web3 fundamentals.</div>
+        <div class="cert-tags"><span class="cert-tag">Blockchain</span><span class="cert-tag">Web3</span><span class="cert-tag">Basics</span></div>
+        <a href="assets/certificates/Blockchain%20Basic.png" class="cert-link" target="_blank" rel="noopener"><i class="fa-solid fa-external-link"></i> See Credential</a>
+      </div>
+      <div class="cert-corner">⊕</div>
+    </article>
+
+    <article class="cert-card reveal" style="--i:1">
+      <div class="verified-ribbon">✓ Verified</div>
+      <a class="cert-image" href="assets/certificates/Data%20Structure%20in%20C.jpg" target="_blank" rel="noopener">
+        <img src="assets/certificates/Data%20Structure%20in%20C.jpg" alt="Data Structure in C certificate">
+      </a>
+      <div class="cert-body">
+        <div class="cert-badge"><i class="fa-solid fa-code"></i></div>
+        <div class="cert-org">CodeChef</div>
+        <div class="cert-title">Data Structure in C</div>
+        <div class="cert-desc">Completed lessons and projects focused on core data structures and structured programming in C.</div>
+        <div class="cert-tags"><span class="cert-tag">C</span><span class="cert-tag">Data Structures</span><span class="cert-tag">Logic</span></div>
+        <a href="assets/certificates/Data%20Structure%20in%20C.jpg" class="cert-link" target="_blank" rel="noopener"><i class="fa-solid fa-external-link"></i> See Credential</a>
+      </div>
+      <div class="cert-corner">C</div>
+    </article>
+
+    <article class="cert-card reveal" style="--i:2">
+      <div class="verified-ribbon">✓ Verified</div>
+      <a class="cert-image" href="assets/certificates/Java.jpeg" target="_blank" rel="noopener">
+        <img src="assets/certificates/Java.jpeg" alt="OOPS through Java certificate">
+      </a>
+      <div class="cert-body">
+        <div class="cert-badge"><i class="fa-brands fa-java"></i></div>
+        <div class="cert-org">CodeChef</div>
+        <div class="cert-title">OOPS Through Java</div>
+        <div class="cert-desc">Built understanding of object-oriented programming concepts including classes, inheritance, and encapsulation.</div>
+        <div class="cert-tags"><span class="cert-tag">Java</span><span class="cert-tag">OOP</span><span class="cert-tag">CodeChef</span></div>
+        <a href="assets/certificates/Java.jpeg" class="cert-link" target="_blank" rel="noopener"><i class="fa-solid fa-external-link"></i> See Credential</a>
+      </div>
+      <div class="cert-corner">J</div>
+    </article>
+
+    <article class="cert-card reveal" style="--i:3">
+      <div class="verified-ribbon">✓ Verified</div>
+      <a class="cert-image" href="assets/certificates/Python.jpg" target="_blank" rel="noopener">
+        <img src="assets/certificates/Python.jpg" alt="Learn Python certificate">
+      </a>
+      <div class="cert-body">
+        <div class="cert-badge"><i class="fa-brands fa-python"></i></div>
+        <div class="cert-org">CodeChef</div>
+        <div class="cert-title">Learn Python</div>
+        <div class="cert-desc">Completed Python exercises covering syntax, control flow, programming logic, and practical fundamentals.</div>
+        <div class="cert-tags"><span class="cert-tag">Python</span><span class="cert-tag">Programming</span><span class="cert-tag">Practice</span></div>
+        <a href="assets/certificates/Python.jpg" class="cert-link" target="_blank" rel="noopener"><i class="fa-solid fa-external-link"></i> See Credential</a>
+      </div>
+      <div class="cert-corner">Py</div>
+    </article>
+
+    <article class="cert-card reveal" style="--i:4">
+      <div class="verified-ribbon">✓ Elite</div>
+      <a class="cert-image" href="assets/certificates/NPTEL.jpg" target="_blank" rel="noopener">
+        <img src="assets/certificates/NPTEL.jpg" alt="NPTEL Developing Soft Skills and Personality certificate">
+      </a>
+      <div class="cert-body">
+        <div class="cert-badge" style="background:linear-gradient(135deg,var(--burgundy),#9b2a3a)"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div class="cert-org">IIT Kanpur · NPTEL</div>
+        <div class="cert-title">Developing Soft Skills and Personality</div>
+        <div class="cert-desc">Achieved Elite grade with 76%, strengthening communication, personality development, and professional readiness.</div>
+        <div class="cert-tags"><span class="cert-tag">Communication</span><span class="cert-tag">Leadership</span><span class="cert-tag">Elite</span></div>
+        <a href="assets/certificates/NPTEL.jpg" class="cert-link" target="_blank" rel="noopener"><i class="fa-solid fa-external-link"></i> See Credential</a>
+      </div>
+      <div class="cert-corner">🎓</div>
+    </article>
+
+    <article class="cert-card reveal" style="--i:5">
+      <div class="verified-ribbon">✓ Event</div>
+      <a class="cert-image" href="assets/certificates/ORCHATHON%202k26.jpg" target="_blank" rel="noopener">
+        <img src="assets/certificates/ORCHATHON%202k26.jpg" alt="ORCHATHON 2K26 certificate">
+      </a>
+      <div class="cert-body">
+        <div class="cert-badge"><i class="fa-solid fa-laptop-code"></i></div>
+        <div class="cert-org">ORCHATHON 2K26</div>
+        <div class="cert-title">National Level Hackathon Participation</div>
+        <div class="cert-desc">Participated in a 36-hour hackathon, applying problem-solving and teamwork in a competitive technical setting.</div>
+        <div class="cert-tags"><span class="cert-tag">Hackathon</span><span class="cert-tag">Teamwork</span><span class="cert-tag">Innovation</span></div>
+        <a href="assets/certificates/ORCHATHON%202k26.jpg" class="cert-link" target="_blank" rel="noopener"><i class="fa-solid fa-external-link"></i> See Credential</a>
+      </div>
+      <div class="cert-corner">⚙</div>
+    </article>
+
+    <article class="cert-card reveal" style="--i:6">
+      <div class="verified-ribbon">✓ Service</div>
+      <a class="cert-image" href="assets/certificates/Wari.jpg" target="_blank" rel="noopener">
+        <img src="assets/certificates/Wari.jpg" alt="Aashadhi Wari volunteer certificate">
+      </a>
+      <div class="cert-body">
+        <div class="cert-badge"><i class="fa-solid fa-hands-helping"></i></div>
+        <div class="cert-org">Solapur Rural Police</div>
+        <div class="cert-title">Aashadhi Wari Volunteer Service</div>
+        <div class="cert-desc">Recognized for volunteer support during Aashadhi Wari 2025, contributing to public guidance and event coordination.</div>
+        <div class="cert-tags"><span class="cert-tag">Volunteer</span><span class="cert-tag">Community</span><span class="cert-tag">Service</span></div>
+        <a href="assets/certificates/Wari.jpg" class="cert-link" target="_blank" rel="noopener"><i class="fa-solid fa-external-link"></i> See Credential</a>
+      </div>
+      <div class="cert-corner">✦</div>
+    </article>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1100px;margin:0 auto;padding:0 40px"><div class="divider-glyph">⊕ ✦ ⊕</div></div>
+
+<section id="projects">
+  <p class="chapter-label reveal">Chapter the Third</p>
+  <h2 class="section-title reveal">The Codex of Works</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon"><i class="fa-solid fa-link"></i></div>
+        <div>
+          <div class="project-title">Blockchain Explorer</div>
+          <span class="project-status status-dev">⚙ In Development</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A lightweight blockchain transaction explorer that visualizes block structures, transaction flows, and chain validation.</p>
+        <div class="project-tech"><span class="tech-pill">Python</span><span class="tech-pill">Flask</span><span class="tech-pill">JavaScript</span><span class="tech-pill">Blockchain</span></div>
+        <p class="project-challenge">"Challenge: Visualizing complex cryptographic chain-links in an intuitive interface."</p>
+        <div class="github-mock"><i class="fa-brands fa-github"></i><span>GitHub — Coming Soon</span><i class="fa-solid fa-arrow-right" style="font-size:.6rem"></i></div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon"><i class="fa-solid fa-terminal"></i></div>
+        <div>
+          <div class="project-title">Ethical Hacking Tools Demo</div>
+          <span class="project-status status-dev">⚙ Workshop Project</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A curated demonstration of ethical hacking methodologies, including network scanning, reconnaissance scripts, and assessment walkthroughs.</p>
+        <div class="project-tech"><span class="tech-pill">Python</span><span class="tech-pill">Nmap</span><span class="tech-pill">Kali Linux</span><span class="tech-pill">Wireshark</span></div>
+        <p class="project-challenge">"Map, enumerate, assess — never exploit without consent."</p>
+        <div class="github-mock"><i class="fa-brands fa-github"></i><span>GitHub — Coming Soon</span><i class="fa-solid fa-arrow-right" style="font-size:.6rem"></i></div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-header">
+        <div class="project-icon"><i class="fa-solid fa-wifi"></i></div>
+        <div>
+          <div class="project-title">Wi-Fi Vulnerability Lab</div>
+          <span class="project-status status-dev">⚙ Planned</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A controlled lab environment exploring common Wi-Fi attack vectors and defensive countermeasures for ethical research.</p>
+        <div class="project-tech"><span class="tech-pill">Aircrack-ng</span><span class="tech-pill">Kali Linux</span><span class="tech-pill">Python</span><span class="tech-pill">IEEE 802.11</span></div>
+        <p class="project-challenge">"Understanding attacks is the first step to building better defenses."</p>
+        <div class="github-mock"><i class="fa-brands fa-github"></i><span>GitHub — Planned</span><i class="fa-solid fa-arrow-right" style="font-size:.6rem"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1100px;margin:0 auto;padding:0 40px"><div class="divider-glyph">⊕ ✦ ⊕</div></div>
+
+<section id="contact">
+  <p class="chapter-label reveal">Chapter the Fourth</p>
+  <h2 class="section-title reveal">Summon the Scribe</h2>
+  <div class="contact-layout">
+    <div class="contact-info reveal-left">
+      <p>Whether you seek a dedicated cybersecurity intern, a collaborative BTech student for your project, or simply wish to exchange knowledge, I welcome all conjurations.</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/rohan-tidke-04bb8a32b" target="_blank" class="contact-link" rel="noopener"><i class="fa-brands fa-linkedin"></i><span>linkedin.com/in/rohan-tidke-04bb8a32b</span></a>
+        <a href="mailto:rohantidke983@gmail.com" class="contact-link"><i class="fa-solid fa-envelope"></i><span>rohantidke983@gmail.com</span></a>
+        <a href="tel:+918262972297" class="contact-link"><i class="fa-solid fa-phone"></i><span>+91 8262972297</span></a>
+        <a href="https://github.com/Rohan0702" target="_blank" class="contact-link" rel="noopener"><i class="fa-brands fa-github"></i><span>github.com/Rohan0702</span></a>
+        <a href="#contact" class="contact-link"><i class="fa-solid fa-map-marker-alt"></i><span>Pandharpur, Maharashtra, India</span></a>
+      </div>
+      <div class="opportunity-banner" style="margin-top:32px">
+        <div class="opp-title">✦ Open to Opportunities ✦</div>
+        <div class="opp-text">Actively seeking internships in <strong style="color:var(--gold-light)">Cybersecurity</strong> & <strong style="color:var(--gold-light)">Blockchain</strong></div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="ornate-box">
+        <div class="corner-br"></div><div class="corner-bl"></div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-input" placeholder="Enter your name...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Email</label>
+            <input type="email" class="form-input" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" class="form-input" placeholder="Internship inquiry, collaboration...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Write your message here..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="align-self:flex-start">✉ Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="divider" style="max-width:600px;margin:0 auto 24px"><div class="divider-glyph">✦</div></div>
+  <div class="footer-sigil">⊕ R · T ⊕</div>
+  <p class="footer-text" style="margin-top:6px">© 2026 Rohan Tidke &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Pandharpur, Maharashtra</p>
+  <p class="footer-text" style="margin-top:4px;opacity:.5">Crafted with dedication — aspiring to secure the digital realm</p>
+</footer>
+
+<script>
+(function spawnMotes(){
+  const container = document.getElementById('particles');
+  for(let i=0;i<28;i++){
+    const m = document.createElement('div');
+    m.className = 'mote';
+    const size = 2 + Math.random()*5;
+    m.style.cssText = `
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      animation-duration:${12+Math.random()*18}s;
+      animation-delay:${-Math.random()*20}s;
+    `;
+    container.appendChild(m);
+  }
+})();
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      const fills = e.target.querySelectorAll('.skill-bar-fill');
+      fills.forEach(f=>{ f.style.width = f.dataset.width; });
+      observer.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right')
+  .forEach(el=>observer.observe(el));
+
+document.querySelectorAll('.skill-bar-fill').forEach(f=>{
+  const sectionObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ f.style.width=f.dataset.width; sectionObserver.unobserve(f);}
+    });
+  },{threshold:0.5});
+  sectionObserver.observe(f);
+});
+
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let current = '';
+  sections.forEach(s=>{
+    if(window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a=>{
+    a.style.color = a.getAttribute('href') === '#'+current
+      ? 'var(--gold-light)' : '';
+  });
+});
+
+function handleSubmit(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = '✓ Message Sent!';
+  btn.style.background = 'linear-gradient(135deg,#1a4d1a,#2d8a2d)';
+  btn.style.borderColor = '#2d8a2d';
+  setTimeout(()=>{
+    btn.textContent = '✉ Send Message';
+    btn.style.background = '';
+    btn.style.borderColor = '';
+    e.target.reset();
+  },3000);
+}
+
+(function addGems(){
+  const ring = document.querySelector('.orbit-ring');
+  if(!ring) return;
+  [0,120,240].forEach(deg=>{
+    const g = document.createElement('div');
+    g.className='gem';
+    g.style.cssText=`
+      transform:rotate(${deg}deg) translate(0,-60px);
+      margin:-5px 0 0 -5px;
+    `;
+    const w = document.createElement('div');
+    w.style.cssText=`
+      position:absolute;top:50%;left:50%;width:0;height:0;
+      animation:spin-slow ${10+deg/30}s linear infinite;
+    `;
+    w.appendChild(g);
+    ring.parentElement.appendChild(w);
+  });
+})();
+
+document.querySelectorAll('.stagger').forEach(parent=>{
+  [...parent.children].forEach((child,i)=>{
+    child.style.setProperty('--i',i);
+  });
+});
+</script>
+</body>
+</html>
