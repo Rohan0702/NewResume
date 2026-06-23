@@ -75,3 +75,64 @@ document.querySelectorAll('.stagger').forEach(parent=>{
     child.style.setProperty('--i',i);
   });
 });
+
+(function portfolioPlayEffect(){
+  const cat = document.querySelector('.cat-trigger');
+  const count = document.querySelector('.race-count');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let laps = 0;
+  let racing = false;
+
+  function updateCount(){
+    count.textContent = String(laps).padStart(3, '0');
+  }
+
+  function popMeow(x, y){
+    const pop = document.createElement('span');
+    pop.className = 'meow-pop';
+    pop.textContent = 'MEOW';
+    pop.style.setProperty('--pop-x', `${x}px`);
+    pop.style.setProperty('--pop-y', `${y}px`);
+    document.body.appendChild(pop);
+    window.setTimeout(()=>pop.remove(), 900);
+  }
+
+  function meow(event){
+    if(!cat) return;
+    cat.classList.add('is-meowing');
+    const rect = cat.getBoundingClientRect();
+    const x = event?.clientX || rect.left + rect.width / 2;
+    const y = event?.clientY || rect.top;
+    popMeow(x, y);
+    window.setTimeout(()=>cat.classList.remove('is-meowing'), 260);
+  }
+
+  function launchRace(){
+    if(racing) return;
+    racing = true;
+    laps += 1;
+    updateCount();
+    document.body.classList.remove('race-running');
+    void document.body.offsetWidth;
+    document.body.classList.add('race-running');
+    window.setTimeout(()=>{
+      document.body.classList.remove('race-running');
+      racing = false;
+    }, prefersReducedMotion ? 250 : 1500);
+  }
+
+  if(cat){
+    cat.addEventListener('click', meow);
+  }
+
+  window.addEventListener('keydown', event=>{
+    if(event.key === 'Shift' && !event.repeat){
+      launchRace();
+    }
+  });
+
+  window.addEventListener('pointermove', event=>{
+    document.body.style.setProperty('--x', `${event.clientX}px`);
+    document.body.style.setProperty('--y', `${event.clientY}px`);
+  }, {passive:true});
+})();
